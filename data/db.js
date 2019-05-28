@@ -10,21 +10,28 @@ module.exports = {
   remove
 };
 
-const find = () => db("posts");
+function find() {
+  return db("zoos");
+}
 
-const findById = id => db("posts").where({ id: Number(id) });
+function findById(id) {
+  return db("zoos").where({ id: Number(id) });
+}
 
-const insert = post =>
-  db("posts")
-    .insert(post)
+function insert(animal) {
+  return db("zoos")
+    .insert(animal)
     .then(ids => ({ id: ids[0] }));
+}
 
-const update = (id, post) =>
-  db("posts")
+function update(id, animal) {
+  return db("zoos")
     .where("id", Number(id))
-    .update(post);
+    .update(animal);
+}
 
-const remove = id =>
-  db("posts")
+function remove(id) {
+  return db("zoos")
     .where("id", Number(id))
     .del();
+}
